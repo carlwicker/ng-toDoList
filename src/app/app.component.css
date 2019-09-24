@@ -1,0 +1,40 @@
+h1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 900;
+  position: relative;
+  padding: 5px;
+}
+
+#test-array .item {
+  background-color: red;
+  width: fit-content;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#numberOfItems {
+  padding: 5px;
+  height: 100px;
+}
+
+#formItem {
+  background-color: greenyellow;
+  width: fit-content;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 5px;
+}
+
+button {
+  width: 100px;
+  height: 25px;
+}
