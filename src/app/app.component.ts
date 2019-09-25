@@ -23,5 +23,7 @@ export class AppComponent {
   submitNewTask() {
     let taskName = this.name;
     this.taskItems.push(taskName);
+    this.name = "";
+    this.formEmpty = !true;
   }
 }

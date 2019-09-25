@@ -1,13 +1,13 @@
 h1 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 1em;
+  font-size: 3em;
   font-weight: 900;
   position: relative;
   padding: 5px;
 }
 
 .test-array .item {
-  background-color: red;
+  background-color: olive;
   width: fit-content;
   padding: 5px;
   color: white;
@@ -43,7 +43,7 @@ h1 {
 }
 
 .formConfirm {
-  background-color: greenyellow;
+  background-color: olivedrab;
   width: fit-content;
   padding: 5px;
   color: white;
