@@ -14,6 +14,7 @@ export class AppComponent {
 
   formConfirmBackground = function() {
     if (this.name.length > 0) {
+      console.log(this.name);
       this.formEmpty = true;
     } else if (this.name.length == 0) {
       this.formEmpty = !true;
