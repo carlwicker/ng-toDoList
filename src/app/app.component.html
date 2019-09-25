@@ -1,15 +1,15 @@
 <h1>{{title}}</h1>
 <form>
-  <input [(ngModel)]="name" name='name' required>
-  <button type="button" (click)='submitNewTask(name)'>Submit</button>
+  <input [(ngModel)]="name" name='name' (keyup)="formConfirmBackground()" required autocomplete="off" />
+  <button type="button" (click)='submitNewTask()'>Submit</button>
 
 
 </form>
 
-<div id='formItem'>{{name}}</div>
+<p [ngClass]="formEmpty ? 'formConfirm' : 'formFieldEmpty'">{{name}}</p>
 
-<div id="numberOfItems">Number of Items: {{taskItems.length}}</div>
+<div class="numberOfItems">Number of Items: {{taskItems.length}}</div>
 
-<div id='test-array' *ngFor="let taskItem of taskItems">
+<div class='test-array' *ngFor="let taskItem of taskItems">
   <div class="item">{{taskItem}}</div>
 </div>

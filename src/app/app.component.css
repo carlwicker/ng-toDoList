@@ -6,7 +6,7 @@ h1 {
   padding: 5px;
 }
 
-#test-array .item {
+.test-array .item {
   background-color: red;
   width: fit-content;
   padding: 5px;
@@ -17,21 +17,41 @@ h1 {
   text-transform: capitalize;
 }
 
-#numberOfItems {
+.numberOfItems {
+  background-color: black;
+  width: fit-content;
   padding: 5px;
-  height: 100px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-transform: capitalize;
+  margin-top: 5px;
+  height: fit-content;
 }
 
-#formItem {
+
+.formFieldEmpty {
+  background-color: white;
+  width: fit-content;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-transform: capitalize;
+  margin-top: 5px;
+  height: fit-content;
+}
+
+.formConfirm {
   background-color: greenyellow;
   width: fit-content;
   padding: 5px;
   color: white;
   font-weight: 500;
   min-width: 30px;
-  text-align: center;
   text-transform: capitalize;
   margin-top: 5px;
+  height: fit-content;
 }
 
 button {
