@@ -1,13 +1,26 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const cors = require("cors");
+const router = express.Router();
+const port = process.env.PORT || 3000;
 const db = "mongodb://carlwicker:potato01@ds331198.mlab.com:31198/to-do-list";
+const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
+
+app.use(bodyParser.json());
+app.use(cors());
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const toDoItem = mongoose.model("to-do-list", { name: String });
+
+let listItemsSchema = new mongoose.Schema({
+  id: String,
+  desc: String
+});
+
+let ListItems = mongoose.model("ListItems", listItemsSchema);
 
 // Forward to Angular Front End
 app.get("/", function(req, res) {
@@ -16,10 +29,19 @@ app.get("/", function(req, res) {
 
 // Test DB Connection Details
 app.get("/api", function(req, res) {
-  res.send("Test DB: " + db + "<br>Port: " + port);
+  toDoItem.find((err, listItems) => {
+    if (err) return console.log(err);
+    console.log(listItems);
+    res.send(listItems);
+  });
+});
 
-  const ListItem = new toDoItem({ name: "Carl" });
-  ListItem.save().then(() => console.log(ListItem));
+app.put("/api", function(req, res) {
+  res.send("OK");
+});
+
+app.get("/api/:id", function(req, res) {
+  res.json(req.params);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

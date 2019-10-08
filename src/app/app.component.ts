@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { NgClass } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Item } from "./item";
 
 @Component({
   selector: "app-root",
@@ -26,5 +29,15 @@ export class AppComponent {
     this.taskItems.push(taskName);
     this.name = "";
     this.formEmpty = !true;
+  }
+
+  ROOT_URL = "http://localhost:3000";
+
+  items: Observable<Item[]>;
+
+  constructor(private http: HttpClient) {}
+
+  getItems() {
+    this.items = this.http.get<Item[]>(this.ROOT_URL + "/api");
   }
 }
