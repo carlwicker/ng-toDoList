@@ -34,12 +34,8 @@ h1 {
   background-color: white;
   width: fit-content;
   padding: 5px;
-  color: white;
-  font-weight: 500;
-  min-width: 30px;
-  text-transform: capitalize;
   margin-top: 5px;
-  height: fit-content;
+  height: 2em;
 }
 
 .formConfirm {
@@ -51,7 +47,7 @@ h1 {
   min-width: 30px;
   text-transform: capitalize;
   margin-top: 5px;
-  height: fit-content;
+  height: 2em;
 }
 
 button {

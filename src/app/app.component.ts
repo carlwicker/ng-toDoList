@@ -3,6 +3,7 @@ import { NgClass } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Item } from "./item";
+import { HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
@@ -17,7 +18,7 @@ export class AppComponent {
 
   formConfirmBackground = function() {
     if (this.name.length > 0) {
-      console.log(this.name);
+      //console.log(this.name);
       this.formEmpty = true;
     } else if (this.name.length == 0) {
       this.formEmpty = !true;
@@ -26,9 +27,18 @@ export class AppComponent {
 
   submitNewTask() {
     let taskName = this.name;
+
+    this.http
+      .post("http://localhost:3000/api", { params: { name: taskName } })
+      .subscribe((data: any) => {
+        return data;
+      });
+
     this.taskItems.push(taskName);
+
     this.name = "";
     this.formEmpty = !true;
+    //console.log(req);
   }
 
   ROOT_URL = "http://localhost:3000";

@@ -8,7 +8,11 @@ const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
 
-app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 app.use(cors());
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -31,17 +35,20 @@ app.get("/", function(req, res) {
 app.get("/api", function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
-    console.log(listItems);
+    // console.log(listItems);
     res.send(listItems);
   });
 });
 
-app.put("/api", function(req, res) {
-  res.send("OK");
+app.post("/api", function(req, res) {
+  name = "OUTPUT: " + req;
+
+  console.log(req.body);
+  res.send(name.json);
 });
 
 app.get("/api/:id", function(req, res) {
-  res.json(req.params);
+  res.json(req.params.id);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
