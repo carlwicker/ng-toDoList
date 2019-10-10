@@ -12,7 +12,7 @@ import { Item } from "./item";
 export class AppComponent {
   title = "Mega To Do List V1.0";
   taskItems = ["make todo list", "make it local", "make it CRUD", "fix bugs"];
-  name;
+  name: string = "";
   taskName;
   items;
   formEmpty: boolean;
@@ -29,13 +29,16 @@ export class AppComponent {
 
   submitNewTask() {
     let taskName = this.name;
+    //console.log(this.name);
 
     this.taskItems.push(taskName);
-    return this.http
+    this.http
       .post(this.ROOT_URL + "/api", { name: taskName })
       .subscribe(data => {
         console.log(data);
       });
+    this.name = "";
+    this.formEmpty = !true;
   }
 
   constructor(private http: HttpClient) {}
