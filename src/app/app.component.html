@@ -3,6 +3,8 @@
   <input [(ngModel)]="name" name='name' (keyup)="formConfirmBackground()" required autocomplete="off" />
   <button type="button" (click)='submitNewTask()'>Submit</button>
 
+  {{ newPost | async }}
+
 
 </form>
 

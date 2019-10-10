@@ -36,15 +36,15 @@ app.get("/api", function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
     // console.log(listItems);
-    res.send(listItems);
+    res.json(listItems);
   });
 });
 
-app.post("/api", function(req, res) {
-  name = "OUTPUT: " + req;
+app.post("/api", bodyParser.json(), function(req, res) {
+  name = req.body;
 
-  console.log(req.body);
-  res.send(name.json);
+  console.log(name);
+  res.json(name);
 });
 
 app.get("/api/:id", function(req, res) {

@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
 import { NgClass } from "@angular/common";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Item } from "./item";
-import { HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
@@ -13,8 +12,11 @@ import { HttpHeaders } from "@angular/common/http";
 export class AppComponent {
   title = "Mega To Do List V1.0";
   taskItems = ["make todo list", "make it local", "make it CRUD", "fix bugs"];
-  name: string = "";
+  name;
+  taskName;
+  items;
   formEmpty: boolean;
+  ROOT_URL = "http://localhost:3000";
 
   formConfirmBackground = function() {
     if (this.name.length > 0) {
@@ -28,22 +30,13 @@ export class AppComponent {
   submitNewTask() {
     let taskName = this.name;
 
-    this.http
-      .post("http://localhost:3000/api", { params: { name: taskName } })
-      .subscribe((data: any) => {
-        return data;
-      });
-
     this.taskItems.push(taskName);
-
-    this.name = "";
-    this.formEmpty = !true;
-    //console.log(req);
+    return this.http
+      .post(this.ROOT_URL + "/api", { name: taskName })
+      .subscribe(data => {
+        console.log(data);
+      });
   }
-
-  ROOT_URL = "http://localhost:3000";
-
-  items: Observable<Item[]>;
 
   constructor(private http: HttpClient) {}
 
