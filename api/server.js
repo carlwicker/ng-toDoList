@@ -3,35 +3,52 @@ const app = express();
 const cors = require("cors");
 const router = express.Router();
 const port = process.env.PORT || 3000;
-const db = "mongodb://carlwicker:potato01@ds331198.mlab.com:31198/to-do-list";
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
-const mongoose = require("mongoose");
+const Item = require("./models/item");
 
+// BodyParser setup
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
+
+// Development CORS fix
 app.use(cors());
 
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
+// Start Environmental Varibles
+require("dotenv").config();
 
-const toDoItem = mongoose.model("to-do-list", { name: String });
+// Initialise Mongoose Connection
+var db = mongoose.connection;
 
-let listItemsSchema = new mongoose.Schema({
-  id: String,
-  desc: String
+mongoose.connect(
+  "mongodb://carlwicker:potato01@ds331198.mlab.com:31198/to-do-list",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+// Error Check Mongoose
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  console.log("Mongoose Connected to Mlab");
 });
 
-let ListItems = mongoose.model("ListItems", listItemsSchema);
+// Mongoose Item Schema
+const ItemSchema = new mongoose.Schema({
+  name: String
+});
+
+// Item Model
+const toDoItem = mongoose.model("to-do-lists", ItemSchema);
 
 // Forward to Angular Front End
 app.get("/", function(req, res) {
   res.redirect("http://localhost:4200");
 });
 
-// Test DB Connection Details
+// GET All Items
 app.get("/api", function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
@@ -40,13 +57,23 @@ app.get("/api", function(req, res) {
   });
 });
 
+// POST Item
 app.post("/api", bodyParser.json(), function(req, res) {
-  name = req.body;
+  itemData = req.body;
+  let item = new Item(itemData);
+  item.save((err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("POSTED: " + res);
+    }
+  });
 
-  console.log(name);
-  res.json(name);
+  //console.log(itemData);
+  res.json(itemData);
 });
 
+// GET Item
 app.get("/api/:id", function(req, res) {
   res.json(req.params.id);
 });
