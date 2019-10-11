@@ -3,20 +3,14 @@
   <input [(ngModel)]="name" name='name' (keyup)="formConfirmBackground()" required autocomplete="off" />
   <button type="button" (click)='submitNewTask()'>Submit</button>
 
-  {{ newPost | async }}
-
-
 </form>
 
 <p [ngClass]="formEmpty ? 'formConfirm' : 'formFieldEmpty'">{{name}}</p>
 
-<div class="numberOfItems">Number of Items: {{taskItems.length}}</div>
+<div class="numberOfItems">Number of Items: {{ itemCount }}</div>
 
-<div class='test-array' *ngFor="let taskItem of taskItems">
-  <div class="item"> {{taskItem}}
+
+<div class='test-array' *ngFor="let item of items | async">
+  <div class="item">
+    <a href="http://localhost:3000/api/{{item._id}}">{{item._id }} - {{ item.name }}</a>
   </div>
-</div> <button (click)="getItems()">Get Posts</button>
-
-<div *ngFor="let item of items | async">
-  <a href="http://localhost:3000/api/{{item._id}}">{{item._id}} - {{ item.name }}</a>
-</div>
