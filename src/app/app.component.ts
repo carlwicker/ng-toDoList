@@ -11,7 +11,7 @@ import { Item } from "./item";
 export class AppComponent implements OnInit {
   title = "Mega To Do List V1.0";
   name: string = "";
-  newTaskName;
+  newItemName;
   public items;
   public itemCount;
   formEmpty: boolean;
@@ -36,14 +36,17 @@ export class AppComponent implements OnInit {
 
   // Form submit data to array.
   submitNewTask() {
-    let newTaskName = this.name;
+    let newItemName = this.name;
 
     this.http
-      .post(this.ROOT_URL + "/api", { name: newTaskName })
+      .post(this.ROOT_URL + "/api", { name: newItemName })
       .subscribe(data => {
-        console.log(data);
+        //console.log(data);
+        this.items = this._itemService.getAllListItems();
       });
+
     this.name = "";
     this.formEmpty = !true;
+    this.itemCount++;
   }
 }
