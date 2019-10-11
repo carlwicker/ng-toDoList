@@ -1,16 +1,27 @@
-<h1>{{title}}</h1>
-<form>
-  <input [(ngModel)]="name" name='name' (keyup)="formConfirmBackground()" required autocomplete="off" />
-  <button type="button" (click)='submitNewTask()'>Add</button>
-
-</form>
-
-<p [ngClass]="formEmpty ? 'formConfirm' : 'formFieldEmpty'">{{ name }}</p>
-
-<div class="numberOfItems">Number of Items: {{ itemCount }}</div>
+<div class="container">
+  <div>
+    <h3>{{title}}</h3>
+  </div>
 
 
-<div class='test-array' *ngFor="let item of items | async">
-  <div class="item">
-    <a href="http://localhost:3000/api/{{item._id}}">{{item._id }} - {{ item.name }}</a>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <input [(ngModel)]="name" name='name' class="form-control" (keyup)="formConfirmBackground()" required
+          autocomplete="off" />
+        <button type="button" (click)='submitNewTask()' class="btn btn-success">Add</button>
+      </div>
+    </div>
+  </form>
+
+
+  <p [ngClass]="formEmpty ? 'formConfirm' : 'formFieldEmpty'">{{ name }}</p>
+
+  <div class="numberOfItems">Number of Items: {{ itemCount }}</div>
+
+
+  <div class='test-array' *ngFor="let item of items | async">
+    <div class="item">
+      <a href="http://localhost:3000/api/{{item._id}}">{{item._id }} - {{ item.name }}</a>
+    </div>
   </div>

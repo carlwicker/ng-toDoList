@@ -9,7 +9,8 @@ import { Item } from "./item";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "Mega To Do List V1.0";
+  title = "Add Item";
+  subTitle: string = "Learning Angular";
   name: string = "";
   newItemName;
   public items;
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // API - Get all list items.
+
     this.items = this._itemService.getAllListItems();
     this.itemCount = this._itemService.getItemCount();
   }
