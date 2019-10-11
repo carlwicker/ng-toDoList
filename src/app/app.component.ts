@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { NgClass } from "@angular/common";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { ItemService } from "./item.service";
+import { Item } from "./item";
 
 @Component({
   selector: "app-root",
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = "Mega To Do List V1.0";
   name: string = "";
   newTaskName;
-  public items: Object;
+  public items;
   public itemCount;
   formEmpty: boolean;
   ROOT_URL = "http://localhost:3000";
@@ -22,9 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // API - Get all list items.
     this.items = this._itemService.getAllListItems();
-    this.itemCount = this._itemService.getAllListItems().subscribe(data => {
-      console.log(data);
-    });
+    this.itemCount = this._itemService.getItemCount();
   }
 
   // Form confirm background colour switch.
