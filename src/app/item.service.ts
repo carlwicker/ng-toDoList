@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+
 import { Item } from "./item";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -10,8 +11,9 @@ export class ItemService {
   constructor(private http: HttpClient) {}
 
   public items;
+  public itemCount;
 
-  // Http Config
+  // API Config
   private _url: string = "http://localhost:3000/api";
 
   httpOptions = {
@@ -21,10 +23,16 @@ export class ItemService {
   };
 
   // API Call - Get All To Do Items
-  getAllListItems() {
-    return this.http.get(this._url);
+  getAllListItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this._url, {
+      headers: this.httpOptions.headers
+    });
   }
 
   // Count Number of Items in To Do List.
-  countListItems() {}
+  countListItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this._url, {
+      headers: this.httpOptions.headers
+    });
+  }
 }

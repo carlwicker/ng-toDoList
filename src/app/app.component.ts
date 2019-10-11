@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { NgClass } from "@angular/common";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ItemService } from "./item.service";
-import { ConsoleReporter } from "jasmine";
 
 @Component({
   selector: "app-root",
@@ -14,7 +13,7 @@ export class AppComponent implements OnInit {
   name: string = "";
   newTaskName;
   public items: Object;
-  itemCount: number = 0;
+  public itemCount;
   formEmpty: boolean;
   ROOT_URL = "http://localhost:3000";
 
@@ -23,13 +22,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // API - Get all list items.
     this.items = this._itemService.getAllListItems();
+    this.itemCount = this._itemService.getAllListItems().subscribe(data => {
+      console.log(data);
+    });
   }
 
   // Form confirm background colour switch.
   formConfirmBackground = function() {
     if (this.name.length > 0) {
       this.formEmpty = true;
-    } else if (this.name.length == 0) {
+    } else if (this.name.length <= 0) {
       this.formEmpty = !true;
     }
   };
@@ -42,10 +44,8 @@ export class AppComponent implements OnInit {
       .post(this.ROOT_URL + "/api", { name: newTaskName })
       .subscribe(data => {
         console.log(data);
-        //console.log(this.items);
       });
     this.name = "";
     this.formEmpty = !true;
-    this.itemCount++;
   }
 }
