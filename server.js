@@ -59,7 +59,7 @@ const toDoItem = mongoose.model("to-do-lists", ItemSchema);
 
 // Forward to Angular Front End
 app.get("/", function(req, res) {
-  res.redirect("http://localhost:4200");
+  res.redirect("");
 });
 
 // GET All Items
@@ -94,7 +94,7 @@ app.get("/api/:id/delete", function(req, res) {
   toDoItem.deleteOne({ _id: id }, function(err) {
     if (err) return handleError(err);
   });
-  res.redirect("http://localhost:3000");
+  res.redirect("");
 });
 
 server.listen(port, () => console.log("Running..."));
