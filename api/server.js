@@ -74,9 +74,14 @@ app.post("/api", bodyParser.json(), function(req, res) {
   res.json(itemData);
 });
 
-// GET Item
-app.get("/api/:id", function(req, res) {
-  res.json(req.params);
+// DELETE Item
+app.get("/api/:id/delete", function(req, res) {
+  id = req.params.id;
+  console.log(id);
+  toDoItem.deleteOne({ _id: id }, function(err) {
+    if (err) return handleError(err);
+  });
+  res.redirect("http://localhost:4200");
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
