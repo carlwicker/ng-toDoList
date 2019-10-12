@@ -2,6 +2,7 @@
   "name": "to-do-list",
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "ng build --aot -prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
