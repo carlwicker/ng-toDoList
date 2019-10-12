@@ -84,7 +84,7 @@ app.post("/api", bodyParser.json(), function(req, res) {
   });
 
   //console.log(itemData);
-  res.json(itemData);
+  res.redirect("/");
 });
 
 // DELETE Item
