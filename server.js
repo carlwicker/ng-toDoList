@@ -1,12 +1,25 @@
 const express = require("express");
-const app = express();
+const http = require("http");
+const path = require("http");
+
 const cors = require("cors");
 const router = express.Router();
-const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
-const Item = require("./models/item");
+const Item = require("./src/models/item");
+
+const app = express();
+
+const port = process.env.PORT || 3000;
+
+app.use(express.static(__dirname + "/dist/to-do-list"));
+
+app.get("", (req, res) => {
+  res.sendfile(path.join(__dirname));
+});
+
+const server = http.createServer(app);
 
 // BodyParser setup
 app.use(
@@ -81,7 +94,7 @@ app.get("/api/:id/delete", function(req, res) {
   toDoItem.deleteOne({ _id: id }, function(err) {
     if (err) return handleError(err);
   });
-  res.redirect("http://localhost:4200");
+  res.redirect("http://localhost:3000");
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.listen(port, () => console.log("Running..."));
