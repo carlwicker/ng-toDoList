@@ -39,7 +39,9 @@
         <th scope="row">{{item._id }}</th>
         <td><a href="http://localhost:3000/api/{{item._id}}" class="item">{{ item.name }}</a></td>
         <td class="item-info">{{ item.created | date }}</td>
-        <td><a href="http://localhost:3000/api/{{item._id}}/delete" class="item-control-text">Delete</a></td>
+        <td><a href="" class="text-secondary">Edit</a> | <a href="http://localhost:3000/api/{{item._id}}/delete"
+            class="text-danger">Delete</a>
+        </td>
       </tr>
     </tbody>
 

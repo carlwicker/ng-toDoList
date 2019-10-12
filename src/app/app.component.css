@@ -9,8 +9,7 @@ p {
   font-size: 1em;
 }
 
-.item,
-.item-control-text {
+.item {
   width: fit-content;
   font-weight: 500;
   min-width: 30px;
