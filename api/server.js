@@ -76,7 +76,7 @@ app.post("/api", bodyParser.json(), function(req, res) {
 
 // GET Item
 app.get("/api/:id", function(req, res) {
-  res.json(req.params.id);
+  res.json(req.params);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
