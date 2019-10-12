@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ItemService } from "./item.service";
 import { Item } from "./item";
@@ -8,7 +8,7 @@ import { Item } from "./item";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   title = "Add Item";
   subTitle: string = "Learning Angular";
   name: string = "";
@@ -16,40 +16,39 @@ export class AppComponent implements OnInit {
   created: Date;
   public items;
   public itemCount;
-  formEmpty: boolean;
+  formEmpty: Boolean = !true;
   ROOT_URL = "http://localhost:3000";
 
   constructor(private http: HttpClient, private _itemService: ItemService) {}
 
   ngOnInit() {
     // API - Get all list items.
-
     this.items = this._itemService.getAllListItems();
-    this.itemCount = this._itemService.getItemCount();
   }
 
   // Form confirm background colour switch.
   formConfirmBackground = function() {
-    if (this.name.length > 0) {
-      this.formEmpty = true;
-    } else if (this.name.length <= 0) {
+    if (this.name == "") {
       this.formEmpty = !true;
+    } else {
+      this.formEmpty = true;
     }
   };
 
   // Form submit data to array.
   submitNewTask() {
     let newItemName = this.name;
-
     this.http
       .post(this.ROOT_URL + "/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
-        //console.log(data);
+        // console.log(data);
         this.items = this._itemService.getAllListItems();
+        this.name = "";
+        this.formEmpty = !true;
       });
+  }
 
-    this.name = "";
-    this.formEmpty = !true;
-    this.itemCount++;
+  ngOnChanges() {
+    this.items = this._itemService.getAllListItems();
   }
 }

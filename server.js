@@ -59,7 +59,7 @@ const toDoItem = mongoose.model("to-do-lists", ItemSchema);
 
 // Forward to Angular Front End
 app.get("/", function(req, res) {
-  res.redirect("/");
+  res.send();
 });
 
 // GET All Items
@@ -82,9 +82,7 @@ app.post("/api", bodyParser.json(), function(req, res) {
       console.log("POSTED: " + res);
     }
   });
-
-  //console.log(itemData);
-  res.redirect("/");
+  res.redirect("/api");
 });
 
 // DELETE Item
