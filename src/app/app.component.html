@@ -28,18 +28,18 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Name</th>
+        <th scope="col">Item</th>
         <th scope="col">Created</th>
-        <th scope="col" id="button-col">Controls</th>
+        <th scope="col">Controls</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let item of items | async">
+      <tr *ngFor="let item of items | async" class="test-hover">
         <th scope="row">{{item._id }}</th>
-        <td><a class="item" href="http://localhost:3000/api/{{item._id}}">{{ item.name }}</a></td>
+        <td><a href="http://localhost:3000/api/{{item._id}}" class="item">{{ item.name }}</a></td>
         <td class="item-info">{{ item.created | date }}</td>
-        <td id="button-col"><button class="btn btn-danger" id="item-delete-button">Delete</button></td>
+        <td><a href="" class="item-control-text">Delete</a></td>
       </tr>
     </tbody>
 

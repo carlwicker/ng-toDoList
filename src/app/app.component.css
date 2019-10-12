@@ -9,9 +9,9 @@ p {
   font-size: 1em;
 }
 
-.item {
+.item,
+.item-control-text {
   width: fit-content;
-  color: olive;
   font-weight: 500;
   min-width: 30px;
   text-transform: capitalize;
@@ -67,14 +67,6 @@ a {
   font-size: 1em;
 }
 
-#item-delete-button {
-  /* margin-bottom: 50px; */
-}
-
 #button-col {
   text-align: right;
-}
-
-#item-id-col {
-  width: 200px;
 }
