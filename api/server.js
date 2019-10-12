@@ -37,7 +37,8 @@ db.once("open", function() {
 
 // Mongoose Item Schema
 const ItemSchema = new mongoose.Schema({
-  name: String
+  name: String,
+  created: Date
 });
 
 // Item Model

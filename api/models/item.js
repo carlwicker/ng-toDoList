@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-const itemSchema = new Schema({
-  name: String
+const itemSchema = new mongoose.Schema({
+  name: String,
+  created: Date
 });
 
 module.exports = mongoose.model("item", itemSchema, "to-do-lists");

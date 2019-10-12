@@ -3,21 +3,17 @@ h1 {
   font-size: 3em;
   font-weight: 900;
   position: relative;
-  padding: 5px;
 }
 
 p {
   font-size: 1em;
 }
 
-.test-array .item {
-  background-color: olive;
+.item {
   width: fit-content;
-  padding: 5px;
-  color: white;
+  color: olive;
   font-weight: 500;
   min-width: 30px;
-  text-align: center;
   text-transform: capitalize;
 }
 
@@ -31,6 +27,7 @@ p {
   text-transform: capitalize;
   margin-top: 5px;
   height: fit-content;
+  margin-bottom: 50px;
 }
 
 
@@ -54,12 +51,30 @@ p {
   height: 2em;
 }
 
-button {
+#add-item-button {
   margin-left: 10px;
+  color: white;
 }
 
 
 
 a {
-  color: white;
+  color: olive;
+}
+
+
+.item-info {
+  font-size: 1em;
+}
+
+#item-delete-button {
+  /* margin-bottom: 50px; */
+}
+
+#button-col {
+  text-align: right;
+}
+
+#item-id-col {
+  width: 200px;
 }

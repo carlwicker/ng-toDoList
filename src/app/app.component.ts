@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   subTitle: string = "Learning Angular";
   name: string = "";
   newItemName;
+  created: Date;
   public items;
   public itemCount;
   formEmpty: boolean;
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
     let newItemName = this.name;
 
     this.http
-      .post(this.ROOT_URL + "/api", { name: newItemName })
+      .post(this.ROOT_URL + "/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
         //console.log(data);
         this.items = this._itemService.getAllListItems();

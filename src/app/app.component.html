@@ -1,4 +1,5 @@
 <div class="container">
+
   <div>
     <h3>{{title}}</h3>
   </div>
@@ -9,7 +10,7 @@
       <div class="input-group">
         <input [(ngModel)]="name" name='name' class="form-control" (keyup)="formConfirmBackground()" required
           autocomplete="off" />
-        <button type="button" (click)='submitNewTask()' class="btn btn-success">Add</button>
+        <button type="button" (click)='submitNewTask()' id="add-item-button" class="btn btn-success ">Add</button>
       </div>
     </div>
   </form>
@@ -20,8 +21,28 @@
   <div class="numberOfItems">Number of Items: {{ itemCount }}</div>
 
 
-  <div class='test-array' *ngFor="let item of items | async">
-    <div class="item">
-      <a href="http://localhost:3000/api/{{item._id}}">{{item._id }} - {{ item.name }}</a>
-    </div>
-  </div>
+
+
+  <!-- Items List -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created</th>
+        <th scope="col" id="button-col">Controls</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items | async">
+        <th scope="row">{{item._id }}</th>
+        <td><a class="item" href="http://localhost:3000/api/{{item._id}}">{{ item.name }}</a></td>
+        <td class="item-info">{{ item.created | date }}</td>
+        <td id="button-col"><button class="btn btn-danger" id="item-delete-button">Delete</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
