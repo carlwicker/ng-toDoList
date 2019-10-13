@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ItemService } from "./item.service";
 import { Item } from "./item";
@@ -8,7 +8,7 @@ import { Item } from "./item";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   title = "Add Item";
   subTitle: string = "Learning Angular";
   name: string = "";
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, OnChanges {
   ngOnInit() {
     // API - Get all list items.
     this.items = this._itemService.getAllListItems();
+    console.log(this.items);
   }
 
   // Form confirm background colour switch.
@@ -46,9 +47,5 @@ export class AppComponent implements OnInit, OnChanges {
         this.name = "";
         this.formEmpty = !true;
       });
-  }
-
-  ngOnChanges() {
-    this.items = this._itemService.getAllListItems();
   }
 }
