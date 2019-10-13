@@ -21,15 +21,15 @@ app.get("", (req, res) => {
 
 const server = http.createServer(app);
 
+// Development CORS fix
+app.use(cors());
+
 // BodyParser setup
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
-
-// Development CORS fix
-app.use(cors());
 
 // Start Environmental Varibles
 require("dotenv").config();
@@ -66,7 +66,7 @@ app.get("/", function(req, res) {
 app.get("/api", function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
-    console.log(listItems);
+    //console.log(listItems);
     res.json(listItems);
   });
 });

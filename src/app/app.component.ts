@@ -17,14 +17,13 @@ export class AppComponent implements OnInit {
   public items;
   public itemCount;
   formEmpty: Boolean = !true;
-  ROOT_URL = "http://localhost:3000";
 
   constructor(private http: HttpClient, private _itemService: ItemService) {}
 
   ngOnInit() {
     // API - Get all list items.
     this.items = this._itemService.getAllListItems();
-    console.log(this.items);
+    //console.log(this.items);
   }
 
   // Form confirm background colour switch.
