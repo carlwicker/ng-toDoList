@@ -24,6 +24,9 @@ const server = http.createServer(app);
 // Development CORS fix
 app.use(cors());
 
+// Start Environmental Varibles
+require("dotenv").config();
+
 // BodyParser setup
 app.use(
   bodyParser.urlencoded({
@@ -31,16 +34,13 @@ app.use(
   })
 );
 
-// Start Environmental Varibles
-require("dotenv").config();
-
 // Initialise Mongoose Connection
 var db = mongoose.connection;
 
-mongoose.connect(
-  "mongodb://carlwicker:potato01@ds331198.mlab.com:31198/to-do-list",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // Error Check Mongoose
 db.on("error", console.error.bind(console, "connection error:"));
@@ -63,7 +63,7 @@ app.get("/", function(req, res) {
 });
 
 // GET All Items
-app.get("/api", function(req, res) {
+app.get("/api", cors(), function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
     //console.log(listItems);
