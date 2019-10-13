@@ -1,4 +1,4 @@
-# Item List
+# Learning Angular 8
 
 https://carlwicker-item-list.herokuapp.com
 
