@@ -13,6 +13,9 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+// Development CORS fix
+app.use(cors());
+
 app.use(express.static(__dirname + "/dist/to-do-list"));
 
 app.get("", (req, res) => {
@@ -20,9 +23,6 @@ app.get("", (req, res) => {
 });
 
 const server = http.createServer(app);
-
-// Development CORS fix
-app.use(cors());
 
 // Start Environmental Varibles
 require("dotenv").config();
@@ -66,7 +66,7 @@ app.get("/", function(req, res) {
 app.get("/api", cors(), function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
-    //console.log(listItems);
+    console.log(listItems);
     res.json(listItems);
   });
 });

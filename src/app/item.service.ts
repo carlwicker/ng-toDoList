@@ -14,11 +14,13 @@ export class ItemService {
   public itemCount: number = 0;
 
   // API Config
-  private _url: string = "https://carlwicker-item-list.herokuapp.com";
+  private _url: string = "http://localhost:3000/api/";
 
   // API Call - Get All To Do Items
   getAllListItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(this._url);
+    let headers = new HttpHeaders().set("Access-Control-Allow-Origin", "*");
+
+    return this.http.get<Item[]>(this._url, { headers: headers });
     console.log("works here");
   }
 
