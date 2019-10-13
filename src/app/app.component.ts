@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // API - Get all list items.
     this.items = this._itemService.getAllListItems();
-    //console.log(this.items);
   }
 
   // Form confirm background colour switch.
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit {
     this.http
       .post("/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
-        // console.log(data);
         this.items = this._itemService.getAllListItems();
         this.name = "";
         this.formEmpty = !true;

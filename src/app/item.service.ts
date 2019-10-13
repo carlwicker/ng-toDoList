@@ -19,7 +19,6 @@ export class ItemService {
   // API Call - Get All To Do Items
   getAllListItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this._url);
-    console.log("works here");
   }
 
   getItemCount() {

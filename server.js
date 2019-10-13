@@ -63,10 +63,9 @@ app.get("/", function(req, res) {
 });
 
 // GET All Items
-app.get("/api", cors(), function(req, res) {
+app.get("/api", function(req, res) {
   toDoItem.find((err, listItems) => {
     if (err) return console.log(err);
-    console.log(listItems);
     res.json(listItems);
   });
 });
@@ -88,7 +87,6 @@ app.post("/api", bodyParser.json(), function(req, res) {
 // DELETE Item
 app.get("/api/:id/delete", function(req, res) {
   id = req.params.id;
-  console.log(id);
   toDoItem.deleteOne({ _id: id }, function(err) {
     if (err) return handleError(err);
   });
