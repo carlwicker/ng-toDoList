@@ -14,7 +14,7 @@ export class ItemService {
   public itemCount: number = 0;
 
   // API Config
-  private _url: string = "https://carlwicker-item-list.herokuapp.com/";
+  private _url: string = "https://carlwicker-item-list.herokuapp.com";
 
   // API Call - Get All To Do Items
   getAllListItems(): Observable<Item[]> {
