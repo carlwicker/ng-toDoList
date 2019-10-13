@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, OnChanges {
   submitNewTask() {
     let newItemName = this.name;
     this.http
-      .post(this.ROOT_URL + "/api", { name: newItemName, created: Date.now() })
+      .post("/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
         // console.log(data);
         this.items = this._itemService.getAllListItems();

@@ -5,9 +5,3 @@ body {
   font-size: 16px;
   margin: 10px;
 }
-
-
-.container {
-  display: block;
-  overflow: auto;
-}
