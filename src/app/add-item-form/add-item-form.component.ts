@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ItemService } from "./../item.service";
 import { Item } from "./../item";
@@ -12,15 +12,11 @@ export class AddItemFormComponent implements OnInit {
   constructor(private http: HttpClient, private _itemService: ItemService) {}
 
   title = "Add Item";
-  subTitle: string = "Learning Angular";
   name: string = "";
-  newItemName;
-  created: Date;
-
   formEmpty: Boolean = !true;
 
-  public items;
-  public itemCount;
+  @Output() public items;
+  @Output() public itemCount;
 
   ngOnInit() {
     // API - Get all list items.
