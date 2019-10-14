@@ -24,7 +24,6 @@ export class ItemService {
     this.getAllListItems().subscribe(data => {
       this.items = data;
       this.itemCount = this.items.length;
-      //console.log(this.itemCount);
     });
   }
 }

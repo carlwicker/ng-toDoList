@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ItemService } from "./../item.service";
 import { Item } from "./../item";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-add-item-form",
@@ -15,8 +16,8 @@ export class AddItemFormComponent implements OnInit {
   name: string = "";
   formEmpty: Boolean = !true;
 
-  @Output() public items;
-  @Output() public itemCount;
+  public items;
+  public itemCount;
 
   ngOnInit() {
     // API - Get all list items.
@@ -40,8 +41,14 @@ export class AddItemFormComponent implements OnInit {
       .post("/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
         this.items = this._itemService.getAllListItems();
+
         this.name = "";
         this.formEmpty = !true;
+        this.refresh();
       });
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 }

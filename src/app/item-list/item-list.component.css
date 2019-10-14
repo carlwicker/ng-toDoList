@@ -1,0 +1,23 @@
+.numberOfItems {
+  background-color: black;
+  width: fit-content;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-transform: capitalize;
+  margin-top: 5px;
+  height: fit-content;
+  margin-bottom: 30px;
+}
+
+.item {
+  width: fit-content;
+  font-weight: 500;
+  min-width: 30px;
+  text-transform: capitalize;
+}
+
+a {
+  color: olive;
+}

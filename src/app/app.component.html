@@ -1,32 +1,9 @@
 <div class="container">
 
-
+  <!-- Add Item Form Component -->
   <app-add-item-form></app-add-item-form>
 
-  <div class="numberOfItems" name='itemCount'>Number of Items: {{ itemCount }}</div>
-
-  <!-- Items List -->
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Item</th>
-        <th scope="col">Created</th>
-        <th scope="col">Controls</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let item of items" class="test-hover">
-        <th scope="row">{{item._id }}</th>
-        <td><a href="/api/{{item._id}}" class="item">{{ item.name }}</a></td>
-        <td class="item-info">{{ item.created | date }}</td>
-        <td><a href="" class="text-secondary">Edit</a> | <a href="/api/{{item._id}}/delete"
-            class="text-danger">Delete</a>
-        </td>
-      </tr>
-    </tbody>
-
-  </table>
+  <!-- Item List Component -->
+  <app-item-list></app-item-list>
 
 </div>
