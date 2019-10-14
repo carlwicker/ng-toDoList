@@ -1,27 +1,9 @@
 <div class="container">
 
-  <div>
-    <h3>{{title}}</h3>
-  </div>
 
+  <app-add-item-form></app-add-item-form>
 
-  <form>
-    <div class="form-group">
-      <div class="input-group">
-        <input [(ngModel)]="name" name='name' class="form-control" (keyup)="formConfirmBackground()" required
-          autocomplete="off" />
-        <button type="button" (click)='submitNewTask()' id="add-item-button" class="btn btn-success ">Add</button>
-      </div>
-    </div>
-  </form>
-
-
-  <p [ngClass]="formEmpty ? 'formConfirm' : 'formFieldEmpty'">{{ name }}</p>
-
-  <div class="numberOfItems">Number of Items: {{ itemCount }}</div>
-
-
-
+  <div class="numberOfItems" name='itemCount'>Number of Items: {{ itemCount }}</div>
 
   <!-- Items List -->
   <table class="table table-hover">
@@ -35,7 +17,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let item of items | async" class="test-hover">
+      <tr *ngFor="let item of items" class="test-hover">
         <th scope="row">{{item._id }}</th>
         <td><a href="/api/{{item._id}}" class="item">{{ item.name }}</a></td>
         <td class="item-info">{{ item.created | date }}</td>

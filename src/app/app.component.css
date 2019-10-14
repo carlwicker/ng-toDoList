@@ -1,20 +1,10 @@
-h1 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 3em;
-  font-weight: 900;
-  position: relative;
-}
-
-p {
-  font-size: 1em;
-}
-
 .item {
   width: fit-content;
   font-weight: 500;
   min-width: 30px;
   text-transform: capitalize;
 }
+
 
 .numberOfItems {
   background-color: black;
@@ -28,34 +18,6 @@ p {
   height: fit-content;
   margin-bottom: 30px;
 }
-
-
-.formFieldEmpty {
-  background-color: white;
-  width: fit-content;
-  padding: 5px;
-  margin-top: 5px;
-  height: 2em;
-}
-
-.formConfirm {
-  background-color: olivedrab;
-  width: fit-content;
-  padding: 5px;
-  color: white;
-  font-weight: 500;
-  min-width: 30px;
-  text-transform: capitalize;
-  margin-top: 5px;
-  height: 2em;
-}
-
-#add-item-button {
-  margin-left: 10px;
-  color: white;
-}
-
-
 
 a {
   color: olive;

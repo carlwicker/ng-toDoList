@@ -9,40 +9,17 @@ import { Item } from "./item";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "Add Item";
-  subTitle: string = "Learning Angular";
-  name: string = "";
-  newItemName;
-  created: Date;
-  public items;
+  public items = [];
   public itemCount;
-  formEmpty: Boolean = !true;
 
   constructor(private http: HttpClient, private _itemService: ItemService) {}
 
   ngOnInit() {
     // API - Get all list items.
-    this.items = this._itemService.getAllListItems();
-  }
-
-  // Form confirm background colour switch.
-  formConfirmBackground = function() {
-    if (this.name == "") {
-      this.formEmpty = !true;
-    } else {
-      this.formEmpty = true;
-    }
-  };
-
-  // Form submit data to array.
-  submitNewTask() {
-    let newItemName = this.name;
-    this.http
-      .post("/api", { name: newItemName, created: Date.now() })
-      .subscribe(data => {
-        this.items = this._itemService.getAllListItems();
-        this.name = "";
-        this.formEmpty = !true;
-      });
+    this._itemService.getAllListItems().subscribe(data => {
+      this.items = data;
+      this.itemCount = this.items.length;
+      console.log(this.itemCount);
+    });
   }
 }

@@ -1,0 +1,23 @@
+.formFieldEmpty {
+  background-color: white;
+  width: fit-content;
+  padding: 5px;
+  margin-top: 5px;
+  height: 2em;
+}
+
+.formConfirm {
+  background-color: olivedrab;
+  width: fit-content;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  min-width: 30px;
+  text-transform: capitalize;
+  margin-top: 5px;
+  height: 2em;
+}
+
+#add-item-button {
+  margin-left: 10px;
+}

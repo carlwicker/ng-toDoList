@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-
 import { Item } from "./item";
 import { Observable } from "rxjs";
 
@@ -11,7 +10,7 @@ export class ItemService {
   constructor(private http: HttpClient) {}
 
   public items;
-  public itemCount: number = 0;
+  public itemCount;
 
   // API Config
   private _url: string = "https://carlwicker-item-list.herokuapp.com/api/";
@@ -22,6 +21,10 @@ export class ItemService {
   }
 
   getItemCount() {
-    return this.itemCount;
+    this.getAllListItems().subscribe(data => {
+      this.items = data;
+      this.itemCount = this.items.length;
+      //console.log(this.itemCount);
+    });
   }
 }
