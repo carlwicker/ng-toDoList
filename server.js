@@ -49,13 +49,13 @@ db.once("open", function() {
 });
 
 // Mongoose Item Schema
-const ItemSchema = new mongoose.Schema({
+ItemSchema = new mongoose.Schema({
   name: String,
   created: Date
 });
 
 // Item Model
-const toDoItem = mongoose.model("to-do-lists", ItemSchema);
+toDoItem = mongoose.model("to-do-lists", ItemSchema);
 
 // Forward to Angular Front End
 app.get("/", function(req, res) {
@@ -73,7 +73,7 @@ app.get("/api", function(req, res) {
 // POST Item
 app.post("/api", bodyParser.json(), function(req, res) {
   itemData = req.body;
-  let item = new Item(itemData);
+  item = new Item(itemData);
   item.save((err, res) => {
     if (err) {
       console.log(err);
@@ -96,7 +96,20 @@ app.get("/api/:id/delete", function(req, res) {
 // EDIT Item
 app.get("/api/:id/edit", function(req, res) {
   id = req.params.id;
-  res.json(id);
+
+  toDoItem.findById(id, function(err, item) {
+    res.json(item);
+  });
+});
+
+app.post("api/:id/edit", (req, res) => {
+  id = req.params.id;
+  updatedItem: String;
+
+  toDoItem.findById(id, function(err, item) {
+    res.json(item);
+    item.overwrite({ name: updatedItem });
+  });
 });
 
 server.listen(port, () => console.log("Running..."));

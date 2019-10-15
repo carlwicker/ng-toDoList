@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ItemService } from "./../item.service";
 
 @Component({
   selector: "app-item-edit-form",
@@ -7,8 +8,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ItemEditFormComponent implements OnInit {
   title: string = "Edit Item";
+  item: any;
+  id: string;
 
-  constructor() {}
+  constructor(private _itemService: ItemService) {}
 
   ngOnInit() {}
 }

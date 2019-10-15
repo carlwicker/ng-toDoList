@@ -26,4 +26,6 @@ export class ItemService {
       this.itemCount = this.items.length;
     });
   }
+
+  getItem() {}
 }
