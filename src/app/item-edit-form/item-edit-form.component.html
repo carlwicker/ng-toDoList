@@ -1,1 +1,14 @@
-<p>Item Edit Form here!!!</p>
+<div>
+  <h3>{{title}}</h3>
+</div>
+
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <input [(ngModel)]="name" name='name' class="form-control" required autocomplete="off" />
+      <button type="button" id="item-edit-button" class="btn btn-success">Update
+        Item</button>
+    </div>
+  </div>
+
+</form>
