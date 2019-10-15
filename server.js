@@ -93,4 +93,10 @@ app.get("/api/:id/delete", function(req, res) {
   res.redirect("/");
 });
 
+// EDIT Item
+app.get("/api/:id/edit", function(req, res) {
+  id = req.params.id;
+  res.json(id);
+});
+
 server.listen(port, () => console.log("Running..."));
