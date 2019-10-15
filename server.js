@@ -78,7 +78,7 @@ app.post("/api", bodyParser.json(), function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log("POSTED: " + res);
+      console.log("Item Saved: " + item._id);
     }
   });
   res.redirect("/api");

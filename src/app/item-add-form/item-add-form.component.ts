@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { ItemService } from "./../item.service";
-import { Item } from "./../item";
+import { ItemService } from "../item.service";
+import { Item } from "../item";
 import { Observable } from "rxjs";
 
 @Component({
-  selector: "app-add-item-form",
-  templateUrl: "./add-item-form.component.html",
-  styleUrls: ["./add-item-form.component.css"]
+  selector: "app-item-add-form",
+  templateUrl: "./item-add-form.component.html",
+  styleUrls: ["./item-add-form.component.css"]
 })
-export class AddItemFormComponent implements OnInit {
+export class ItemAddFormComponent implements OnInit {
   constructor(private http: HttpClient, private _itemService: ItemService) {}
 
   title = "Add Item";

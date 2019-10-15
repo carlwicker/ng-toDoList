@@ -6,14 +6,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { ItemService } from "./item.service";
 import { ItemEditFormComponent } from "./item-edit-form/item-edit-form.component";
-import { AddItemFormComponent } from "./add-item-form/add-item-form.component";
+import { ItemAddFormComponent } from "./item-add-form/item-add-form.component";
 import { ItemListComponent } from "./item-list/item-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemEditFormComponent,
-    AddItemFormComponent,
+    ItemAddFormComponent,
     ItemListComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule],
