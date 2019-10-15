@@ -8,15 +8,33 @@ import { ItemService } from "./item.service";
 import { ItemEditFormComponent } from "./item-edit-form/item-edit-form.component";
 import { ItemAddFormComponent } from "./item-add-form/item-add-form.component";
 import { ItemListComponent } from "./item-list/item-list.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+
+const appRoutes: Routes = [
+  { path: "api/:id/edit", component: ItemEditFormComponent },
+  { path: "", component: ItemAddFormComponent },
+  { path: "**", component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemEditFormComponent,
     ItemAddFormComponent,
-    ItemListComponent
+    ItemListComponent,
+    PageNotFoundComponent
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule],
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    // other imports here
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
   providers: [ItemService],
   bootstrap: [AppComponent]
 })

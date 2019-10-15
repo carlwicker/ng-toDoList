@@ -27,5 +27,7 @@ export class ItemService {
     });
   }
 
-  getItem() {}
+  getItem(): Observable<Item[]> {
+    return this.http.get<Item[]>(this._url);
+  }
 }

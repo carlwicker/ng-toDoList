@@ -45,7 +45,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Error Check Mongoose
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
-  console.log("Mongoose Connected to Mlab");
+  console.log("Mongoose Connected to Heroku");
 });
 
 // Mongoose Item Schema
@@ -112,4 +112,4 @@ app.post("api/:id/edit", (req, res) => {
   });
 });
 
-server.listen(port, () => console.log("Running..."));
+server.listen(port, () => console.log("SERVER STARTED"));
