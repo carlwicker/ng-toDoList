@@ -44,9 +44,7 @@ export class ItemEditFormComponent implements OnInit {
         created: Date.now()
       })
       .subscribe(data => {
-        //this.items = this._itemService.getAllListItems();
-        //console.log(this.name);
-        //this.name = "";
+        // Add Mongoose findOneAndUpdate
       });
   }
 }
