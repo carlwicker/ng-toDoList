@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ItemService } from "./../item.service";
 import { ActivatedRoute } from "@angular/router";
-import { Item } from "./../item";
-import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -12,10 +10,11 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ItemEditFormComponent implements OnInit {
   title: string = "Edit Item";
-  items: any;
   item: any;
-  formInitalValue: any;
+  formInitalValue;
   id;
+  name;
+  items;
 
   constructor(
     private _itemService: ItemService,
@@ -37,5 +36,17 @@ export class ItemEditFormComponent implements OnInit {
     });
   }
 
-  get() {}
+  editItemButton() {
+    let newItemName = this.name;
+    this.http
+      .post("/api/" + this.id + "/edit/" + this.formInitalValue, {
+        name: newItemName,
+        created: Date.now()
+      })
+      .subscribe(data => {
+        //this.items = this._itemService.getAllListItems();
+        //console.log(this.name);
+        //this.name = "";
+      });
+  }
 }

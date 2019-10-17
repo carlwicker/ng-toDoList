@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 
 const appRoutes: Routes = [
   { path: "api/:id/edit", component: ItemEditFormComponent },
+  { path: "api/:id/edit/:name", component: ItemAddFormComponent },
   { path: "", component: ItemAddFormComponent },
   { path: "**", component: PageNotFoundComponent }
 ];

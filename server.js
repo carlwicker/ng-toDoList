@@ -102,14 +102,11 @@ app.get("/api/:id/edit", function(req, res) {
   });
 });
 
-app.post("api/:id/edit", (req, res) => {
-  id = req.params.id;
-  updatedItem: String;
-
-  toDoItem.findById(id, function(err, item) {
-    res.json(item);
-    item.overwrite({ name: updatedItem });
-  });
+// UPDATE Item
+app.post("/api/:id/edit/:name", bodyParser.json(), (req, res) => {
+  itemData = req.params;
+  console.log(itemData);
+  res.json(itemData);
 });
 
 server.listen(port, () => console.log("SERVER STARTED"));

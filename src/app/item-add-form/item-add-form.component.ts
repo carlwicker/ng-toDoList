@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ItemService } from "../item.service";
-import { Item } from "../item";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-item-add-form",
@@ -48,10 +46,12 @@ export class ItemAddFormComponent implements OnInit {
       });
   }
 
+  // Refresh window to update displayed list
   refresh(): void {
     window.location.reload();
   }
 
+  // Submit form on keypress
   keyDownEnter() {
     this.submitNewTask();
   }
