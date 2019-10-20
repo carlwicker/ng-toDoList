@@ -38,8 +38,6 @@ export class ItemAddFormComponent implements OnInit {
     this.http
       .post("/api", { name: newItemName, created: Date.now() })
       .subscribe(data => {
-        this.items = this._itemService.getAllListItems();
-
         this.name = "";
         this.formEmpty = !true;
         this.refresh();

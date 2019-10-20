@@ -103,10 +103,15 @@ app.get("/api/:id/edit", function(req, res) {
 });
 
 // UPDATE Item
-app.post("/api/:id/edit/:name", bodyParser.json(), (req, res) => {
-  itemData = req.params;
-  console.log(itemData);
-  res.json(itemData);
+app.put("/api/:id/edit", bodyParser.json(), (req, res) => {
+  let _id = req.params.id;
+  let name = req.body.name;
+  toDoItem
+    .findByIdAndUpdate({ _id: req.params.id }, { name: name })
+    .then(() => {
+      console.log(req.body);
+      res.json(_id);
+    });
 });
 
 server.listen(port, () => console.log("SERVER STARTED"));

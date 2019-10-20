@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ItemService } from "./../item.service";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { resolve } from "q";
 
 @Component({
   selector: "app-item-edit-form",
@@ -15,6 +16,8 @@ export class ItemEditFormComponent implements OnInit {
   id;
   name;
   items;
+  newItemName;
+  data;
 
   constructor(
     private _itemService: ItemService,
@@ -23,13 +26,16 @@ export class ItemEditFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Get ID Param
     this.id = this.route.snapshot.paramMap.get("id");
-    console.log(this.id);
+    //console.log(this.id);
+    // Filter Items to match param
     this._itemService.getItem().subscribe(data => {
       for (var i = 0; i < data.length; i++) {
         let item = data[i];
 
         if (item._id == this.id) {
+          // Set filtered param
           this.formInitalValue = data[i].name;
         }
       }
@@ -37,14 +43,23 @@ export class ItemEditFormComponent implements OnInit {
   }
 
   editItemButton() {
-    let newItemName = this.name;
+    let name = this.formInitalValue;
+    let id = this.id;
+
+    console.log("ID CHECK: " + id);
+    console.log("NAME CHECK: " + name);
+
+    let testString = "/api/" + id + "/edit";
+    console.log(testString);
+
     this.http
-      .post("/api/" + this.id + "/edit/" + this.formInitalValue, {
-        name: newItemName,
-        created: Date.now()
+      .put("/api/" + this.id + "/edit", {
+        // PROBLEM HERE
+        name: name,
+        _id: id
       })
-      .subscribe(data => {
-        // Add Mongoose findOneAndUpdate
+      .subscribe(resolve, data => {
+        resolve(true);
       });
   }
 }
