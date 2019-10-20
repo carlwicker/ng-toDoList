@@ -5,10 +5,9 @@
 <form>
   <div class="form-group">
     <div class="input-group">
-      <input [(ngModel)]="formInitalValue" name="item-name" class="form-control" value="{{ formInitalValue }}" required
-        autocomplete="off" />
-      <button type="button" id="item-edit-button" routerLink="/" (click)="editItemButton()"
-        class="btn btn-success"><a>Update
+      <input [(ngModel)]="formInitalValue" name="item-name" class="form-control" (keydown.enter)="keyDownEnter()"
+        value="{{ formInitalValue }}" required autocomplete="off" />
+      <button type="button" id="item-edit-button" (click)="editItemButton()" class="btn btn-success"><a>Update
           Item</a></button>
     </div>
   </div>

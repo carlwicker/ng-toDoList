@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ItemService } from "./../item.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink, Routes, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { resolve } from "q";
 
 @Component({
   selector: "app-item-edit-form",
@@ -22,7 +21,8 @@ export class ItemEditFormComponent implements OnInit {
   constructor(
     private _itemService: ItemService,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -58,8 +58,12 @@ export class ItemEditFormComponent implements OnInit {
         name: name,
         _id: id
       })
-      .subscribe(resolve, data => {
-        resolve(true);
-      });
+      .subscribe(data => {});
+    this.router.navigate(["/"]);
+  }
+
+  // Submit form on keypress
+  keyDownEnter() {
+    this.editItemButton();
   }
 }
