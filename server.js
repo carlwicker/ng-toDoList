@@ -110,7 +110,6 @@ app.put("/api/:id/edit", bodyParser.json(), (req, res) => {
     .findByIdAndUpdate({ _id: req.params.id }, { name: name })
     .then(() => {
       console.log(req.body);
-      res.json(_id);
     });
 });
 
